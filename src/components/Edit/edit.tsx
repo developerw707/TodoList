@@ -1,19 +1,22 @@
-import React from 'react';
-
-const Edit = () => {
+import React, {useContext} from 'react';
+import { useParams } from 'react-router-dom';
+import { Context as TodoContext } from '../../context/TodoContext';
+const Edit:React.FC = () => {
+    const {title, description, status} = useParams();
+    
     return (
         <React.Fragment>
             <div className='m-8'>
-                <h2 className='text-2xl text-black-900 font-semibold mb-5'>Edit Task</h2>
+                <h2 className='text-2xl text-black-900 font-semibold mb-5'>Edit Task({title})</h2>
                 <div className='mb-6'>
-                    <input type="text" id="large-input" className="block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500" placeholder='Title' required />
+                    <input type="text" id="large-input" className="block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500" value={title} placeholder='Title' required />
                 </div>
                 <div className='mb-6'>
-                    <textarea id="description" name='descrpition' rows={20} className="block p-4 w-full text-md text-gray-900 bg-gray-100 rounded-lg border-b border-gray-300 focus:outline-0 focus:ring-blue-500 focus:border-blue-500" placeholder="Description"></textarea>
+                    <textarea id="description" name='descrpition' rows={20} className="block p-4 w-full text-md text-gray-900 bg-gray-100 rounded-lg border-b border-gray-300 focus:outline-0 focus:ring-blue-500 focus:border-blue-500" value={description} placeholder="Description"></textarea>
                 </div>
                 <div className='mb-6'>
-                    <select className='block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-t-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500'>
-                        <option className='hover:bg-gray-500 md-5' value="inQA">inQA</option>
+                    <select value={status} className='block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-t-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500'>
+                        <option value="inQA">inQA</option>
                         <option value="Done">Done</option>
                         <option value="ToDo">ToDo</option>
                     </select>

@@ -6,7 +6,6 @@ import Edit from './components/Edit/edit';
 import './App.css';
 
 function App() {
-  const [navbar, setNavbar] = useState(false);
   return (
     <div className="w-full sm:w-8/12 mx-auto bg-white">
       <div className='bg-sky-700'>
@@ -14,7 +13,7 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/edit' element = {<Edit />} />
+        <Route path='/edit/:title/:description/:status' element = {<Edit />} />
       </Routes>
     </div>
   );
