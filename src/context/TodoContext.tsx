@@ -12,7 +12,11 @@ const reducer = (state: ICounterState, action: ICounterAction): ICounterState =>
                 ...state,
                 todos: [...state.todos, action.payload]
             }
-            
+        case 'Update':
+            return {
+                ...state,
+                todos: [...state.todos, action.payload]
+            }
         default:
             return state
     }

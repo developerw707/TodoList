@@ -5,7 +5,7 @@ export const addTodo = (todo:ITodoItem): ICounterAction => ({
     payload: todo
 });
 
-export const editTodo = (id:string): ICounterAction => ({
-    type: 'Edit',
-    payload: id
+export const updateTodo = (updateTodo:ITodoItem): ICounterAction => ({
+    type: 'Update',
+    payload: updateTodo
 });

@@ -18,4 +18,4 @@ export interface IContextModel {
 
 export type ICounterAction = 
     | {type: 'ADD'; payload: ITodoItem}
-    | {type: 'Edit'; payload: string};
+    | {type: 'Update'; payload: ITodoItem};
