@@ -1,3 +1,4 @@
+// Add Component
 import React, { FormEvent, useContext, useState } from "react";
 import { Context as TodoContext } from "../context/TodoContext";
 import { addTodo } from "../actions/TodoActions";
@@ -13,7 +14,7 @@ const AddTodoContext: React.FC = () => {
         if (title === "") {
             return;
         }
-
+        // Add Action Dispatch
         dispatch(
             addTodo({
                 id: new Date().getTime().toString(),

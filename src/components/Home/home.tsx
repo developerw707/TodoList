@@ -6,12 +6,14 @@ import Edit from '../Edit/edit';
 import TodoList from '../TodoList';
 import { ITodoItem } from '../../interface';
 const Home = () => {
+    // Initial Data Setting
     const [editShowCase, setEditShowCase] = useState<boolean>(false);
     const [editItem, setEditItem] = useState<ITodoItem>();
     const showEditPannel = (value: boolean, todoItem?: ITodoItem): void => {
         setEditShowCase(value);
         setEditItem(todoItem);
     }
+    // Showing Edit Pannel
     if (editShowCase) {
         return (
             <React.Fragment>
@@ -24,6 +26,7 @@ const Home = () => {
             </React.Fragment>
         )
     } else {
+    // Home Pannel Showing
         return (
             <React.Fragment>
                 <TodoProvider>

@@ -1,3 +1,5 @@
+// TodoList Component
+
 import React, { useContext } from 'react';
 import { Context as TodoContext } from '../context/TodoContext';
 import { ITodoItem } from '../interface';

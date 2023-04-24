@@ -4,7 +4,7 @@ import { ICounterState, IContextModel, ICounterAction } from '../interface';
 const defaultState: ICounterState = {
     todos: []
 };
-
+// Reducer Function
 const reducer = (state: ICounterState, action: ICounterAction): ICounterState => {
     switch (action.type) {
         case 'ADD':
@@ -21,7 +21,7 @@ const reducer = (state: ICounterState, action: ICounterAction): ICounterState =>
             return state
     }
 };
-
+// Context Defining
 export const Context = React.createContext({} as IContextModel);
 
 interface Props {

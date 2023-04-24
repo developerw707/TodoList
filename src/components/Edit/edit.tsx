@@ -1,3 +1,4 @@
+// Edit Component
 import React, { useContext, useState, FormEvent } from 'react';
 import { Context as TodoContext } from '../../context/TodoContext';
 import { Provider as TodoProvider } from "../../context/TodoContext";
@@ -23,7 +24,7 @@ const Edit: React.FC<IEditData> = ({data, showEditPannel}) => {
         if (updateTitle === "") {
             return;
         }
-
+        // Update Action Dispatch
         dispatch(
             updateTodo({
                 id: updateId,
@@ -32,6 +33,7 @@ const Edit: React.FC<IEditData> = ({data, showEditPannel}) => {
                 status: updateStatus
             })
         );
+        // EditPannel hidding
         showEditPannel(false);
     }
 
