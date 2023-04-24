@@ -35,6 +35,11 @@ const Edit: React.FC<IEditData> = ({data, showEditPannel}) => {
         showEditPannel(false);
     }
 
+    const cancelHandler = (event: FormEvent) => {
+        event.preventDefault();
+        showEditPannel(false);
+    }
+    
     return (
         <React.Fragment>
             <TodoProvider>
@@ -63,7 +68,7 @@ const Edit: React.FC<IEditData> = ({data, showEditPannel}) => {
                             </button>
                         </div>
                         <div className='md:w-1/2 sm:w-auto'>
-                            <button type='button' className='block w-full bg-gray-200 text-xl text-gray-400 border-2 border-gray-400 rounded-lg p-3 hover:bg-gray-600'>Cancel</button>
+                            <button type='button' onClick={cancelHandler} className='block w-full bg-gray-200 text-xl text-gray-400 border-2 border-gray-400 rounded-lg p-3 hover:bg-gray-600'>Cancel</button>
                         </div>
                     </div>
                 </div>
