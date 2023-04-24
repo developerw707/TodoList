@@ -1,23 +1,40 @@
 import React, { useContext, useState, FormEvent } from 'react';
-import { useParams } from 'react-router-dom';
 import { Context as TodoContext } from '../../context/TodoContext';
 import { Provider as TodoProvider } from "../../context/TodoContext";
 import { updateTodo } from "../../actions/TodoActions";
-import { useNavigate } from 'react-router-dom';
 import { ITodoItem } from '../../interface';
 
 interface IEditData {
-    data: ITodoItem
+    data: ITodoItem,
+    showEditPannel: (arg: boolean) => void
 }
 
-const Edit: React.FC<IEditData> = ({data}) => {
+const Edit: React.FC<IEditData> = ({data, showEditPannel}) => {
     
+    const { dispatch } = useContext(TodoContext);
     const [updateTitle, setUpdateTitle] = useState(`${data.title}`);
     const [updateDescripton, setUpdateDescription] = useState(`${data.description}`);
+    const [updateStatus, setUpdateStatus] = useState(`${data.status}`);
+    const [updateId, setUpdateId] = useState(`${data.id}`);
+    
+    const updateHandler = (event: FormEvent) => {
+        event.preventDefault();
 
-    const updateHandler = () => {
+        if (updateTitle === "") {
+            return;
+        }
 
+        dispatch(
+            updateTodo({
+                id: updateId,
+                title: updateTitle,
+                description: updateDescripton,
+                status: updateStatus
+            })
+        );
+        showEditPannel(false);
     }
+
     return (
         <React.Fragment>
             <TodoProvider>
@@ -30,8 +47,8 @@ const Edit: React.FC<IEditData> = ({data}) => {
                         <textarea id="description" onChange={e => setUpdateDescription(e.target.value)} name='descrpition' rows={20} className="block p-4 w-full text-md text-gray-900 bg-gray-100 rounded-lg border-b border-gray-300 focus:outline-0 focus:ring-blue-500 focus:border-blue-500" value={updateDescripton} placeholder="Description"></textarea>
                     </div>
                     <div className='mb-6'>
-                        <select className='block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-t-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500'>
-                            <option value={data.status}>{data.status}</option>
+                        <select onChange={e => setUpdateStatus(e.target.value)} className='block w-full p-4 text-md text-gray-900 border-b border-gray-300 rounded-t-lg bg-gray-100 sm:text-md focus:outline-0 focus:ring-blue-500 focus:border-b-blue-500'>
+                            <option value={updateStatus}>{updateStatus}</option>
                             <option className='hover:bg-gray-500 md-5' value="inQA">inQA</option>
                             <option value="Done">Done</option>
                             <option value="ToDo">ToDo</option>

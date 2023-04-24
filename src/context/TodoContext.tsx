@@ -15,7 +15,7 @@ const reducer = (state: ICounterState, action: ICounterAction): ICounterState =>
         case 'Update':
             return {
                 ...state,
-                todos: [...state.todos, action.payload]
+                todos: state.todos.map(item => item.id == action.payload.id ? Object.assign({}, item, action.payload): item)
             }
         default:
             return state

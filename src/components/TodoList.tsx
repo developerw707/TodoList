@@ -4,7 +4,6 @@ import { ITodoItem } from '../interface';
 
 interface IfirstChildProps {
     showEditPannel: (arg: boolean, todoItem: ITodoItem) => void
-
 }
 
 const TodoList: React.FC<IfirstChildProps> = ({ showEditPannel }) => {

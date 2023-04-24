@@ -5,11 +5,10 @@ import AddTodoContext from '../AddTodoContext';
 import Edit from '../Edit/edit';
 import TodoList from '../TodoList';
 import { ITodoItem } from '../../interface';
-import { title } from 'process';
 const Home = () => {
     const [editShowCase, setEditShowCase] = useState<boolean>(false);
     const [editItem, setEditItem] = useState<ITodoItem>();
-    const showEditPannel = (value: boolean, todoItem: ITodoItem): void => {
+    const showEditPannel = (value: boolean, todoItem?: ITodoItem): void => {
         setEditShowCase(value);
         setEditItem(todoItem);
     }
@@ -17,7 +16,10 @@ const Home = () => {
         return (
             <React.Fragment>
                 <TodoProvider>
-                    {editItem? (<Edit data={editItem}/>): ("")}
+                    <div className='bg-sky-700'>
+                        <h3 className='text-2xl py-4 pl-8 text-white'>Task Management <span>&rsaquo;</span> Edit</h3>
+                    </div>
+                    {editItem ? (<Edit data={editItem} showEditPannel={showEditPannel} />) : ("")}
                 </TodoProvider>
             </React.Fragment>
         )
@@ -25,16 +27,19 @@ const Home = () => {
         return (
             <React.Fragment>
                 <TodoProvider>
+                    <div className='bg-sky-700'>
+                        <h3 className='text-2xl py-4 pl-8 text-white'>Task Management <span>&rsaquo;</span> Home</h3>
+                    </div>
                     <AddTodoContext />
-    
+
                     <TodoList showEditPannel={showEditPannel} />
-    
+
                 </TodoProvider>
-    
+
             </React.Fragment >
         )
     }
-    
+
 }
 
 export default Home;
